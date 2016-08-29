@@ -1,0 +1,44 @@
+{
+  "name": "xee-components",
+  "version": "1.0.0",
+  "description": "A set of components which are frequently used in xee applications.",
+  "main": "./lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "test": "mocha --compilers js:babel-register --recursive ./src/**/*.spec.js",
+    "test:watch": "npm test -- --watch",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeejp/xee-components.git"
+  },
+  "author": "Ryo33",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^15.0",
+    "material-ui": "^0.15",
+    "react-dom": "^15.0",
+    "react-tap-event-plugin": "^1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.4.1",
+    "jsdom": "^9.4.2",
+    "mocha": "^3.0.2",
+    "mocha-jsdom": "^1.1.0",
+    "react-addons-test-utils": "^15.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/xeejp/xee-components/issues"
+  },
+  "homepage": "https://github.com/xeejp/xee-components#readme"
+}
