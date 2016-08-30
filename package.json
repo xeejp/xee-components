@@ -41,5 +41,6 @@
   "bugs": {
     "url": "https://github.com/xeejp/xee-components/issues"
   },
-  "homepage": "https://github.com/xeejp/xee-components#readme"
+  "homepage": "https://github.com/xeejp/xee-components#readme",
+  "dependencies": {}
 }
