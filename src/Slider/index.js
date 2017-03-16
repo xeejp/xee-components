@@ -102,8 +102,8 @@ class Slider extends Component {
 }
 
 Slider.propTypes = {
-  value: PropTypes.string.isRequired,
-  divisor: PropTypes.node.isRequired,
+  value: PropTypes.number.isRequired,
+  divisor: PropTypes.number.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired
