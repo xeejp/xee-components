@@ -1,6 +1,6 @@
 {
   "name": "xee-components",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A set of components which are frequently used in xee applications.",
   "main": "./lib/index.js",
   "files": [
