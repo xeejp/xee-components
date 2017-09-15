@@ -38,7 +38,7 @@ class Stepper_ extends Component {
   }
 
   render() {
-    const { page, pages, pageNames } = this.props
+    const { page, pages, pageNames, text } = this.props
     return (
       <Stepper activeStep={pages.indexOf(page)} linear={true}>
         {
@@ -50,8 +50,8 @@ class Stepper_ extends Component {
             </Step>
           ))
         }
-        <RaisedButton onClick={this.previousPage}>前に戻る</RaisedButton>
-        <RaisedButton onClick={this.nextPage} primary={true}>次へ進む</RaisedButton>
+        <RaisedButton onClick={this.previousPage}>{text["go_back"]}</RaisedButton>
+        <RaisedButton onClick={this.nextPage} primary={true}>{text["go_next"]}</RaisedButton>
       </Stepper>
     )
   }
@@ -66,6 +66,7 @@ Stepper_.propTypes = {
     PropTypes.object
   ]).isRequired,
   changePage: PropTypes.func.isRequired,
+  text: React.PropTypes.object,
 }
 
 export default Stepper_

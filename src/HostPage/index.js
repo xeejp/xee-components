@@ -48,7 +48,7 @@ class PageButtons extends Component {
   }
 
   render() {
-    const { page, getPageName, pages } = this.props
+    const { page, getPageName, pages, text } = this.props
     const index = pages.indexOf(page)
     const buttons = []
     for (let i = 0; i < pages.length; i ++) {
@@ -65,8 +65,8 @@ class PageButtons extends Component {
         <Stepper activeStep={index} linear={false}>
           {buttons}
         </Stepper>
-        <FlatButton onClick={this.backPage} style={{ marginLeft: '3%' }} disabled={index === 0}>戻る</FlatButton>
-        <RaisedButton onClick={this.nextPage} primary={true} style={{ marginLeft: '3%' }}>次へ</RaisedButton>
+        <FlatButton onClick={this.backPage} style={{ marginLeft: '3%' }} disabled={index === 0}>{text["back"]}</FlatButton>
+        <RaisedButton onClick={this.nextPage} primary={true} style={{ marginLeft: '3%' }}>{text["next"]}</RaisedButton>
       </span>
     )
   }
@@ -85,16 +85,18 @@ const HostPage = ({
   settingButton = false,
   editButton = false,
   downloadButton = false,
+  text = {},
 }) => {
+  text = Object.assign({}, { "next": "次へ", "back": "戻る", "go_next": "次へ進む", "go_back": "前へ戻る", "connecting": ["接続中", "サーバーに接続しています。\nこのまましばらくお待ちください。"]}, text)
   if (loading) {
     return (
       <Card style={{padding: '20px'}}>
-        <CardTitle title="接続中" style={{padding: '0px', marginTop: '7px', marginBottom: '14px'}}/>
+        <CardTitle title={text["connecting"][0]} style={{padding: '0px', marginTop: '7px', marginBottom: '14px'}}/>
         <CardText style={{padding: '0px', margin: '0px'}}>
           <div style={{textAlign: 'center'}}>
             <CircularProgress style={{margin: '0px', padding: '0px' }} />
           </div>
-          <p style={{margin: '0px', padding: '0px'}}>サーバーに接続しています。<br/>このまましばらくお待ちください。</p>
+          <p style={{margin: '0px', padding: '0px'}}>{text["connecting"][1].split(/(\n)/g).map(function(line){if(line.match(/(\n)/g)){return React.createElement('br')}else{return line}})}</p>
         </CardText>
       </Card>
     )
@@ -106,6 +108,7 @@ const HostPage = ({
           getPageName={getPageName}
           pages={pages}
           onChangePage={changePage}
+          text={text}
         />
         <Divider
           style={{
@@ -160,6 +163,7 @@ HostPage.propTypes = {
   settingButton: React.PropTypes.bool,
   editButton: React.PropTypes.bool,
   downloadButton: React.PropTypes.bool,
+  text: React.PropTypes.object,
 }
 
 export default HostPage
